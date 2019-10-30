@@ -13,9 +13,13 @@
 ## Installation
 
 To install the application follow the instructions below:
+
     -cd development/
+
 	-git clone https://github.com/tomrennhack/project-2-again/projects/1
+
 	-cd project-2-again/
+
 	-npm install
 	
 ## Running Locally
