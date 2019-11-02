@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Fartdog90s",
+    "password": process.env.PASS,
     "database": "fkntodolist",
     "host": "localhost",
     "dialect": "mysql"
