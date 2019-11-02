@@ -1,12 +1,11 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.UserInfo.findAll({}).then(function(dbfkntodolist) {
       res.render("index", {
-        msg: "Welcome...",
-        examples: dbExamples
+        users: dbfkntodolist
       });
     });
   });
