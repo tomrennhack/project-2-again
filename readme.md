@@ -33,3 +33,25 @@ After the `PORT` environment variable has been set, run the Node.js application 
 	node server.js
 	
 The application will now be running locally on `PORT`, in this case that is port.__ You can then access it locally from your browser at the URL `localhost:PORT`, in this case `localhost:`.**
+
+## File structure
+
+### HTML Routes
+
+Root route "/"
+Sign up page route (post to users table) "/signup"
+To do list route (post to to do list table) "/todos"
+
+### API Routes
+
+"/api/users"
+	fullName, DataTypes.STRING,
+	email, DataTypes.STRING,
+	username, DataTypes.STRING,
+	password, DataTypes.STRING,
+	twitterHandle, DataTypes.STRING
+
+"/api/todos"
+	id, DataTypes.INTEGER
+	description, DataTypes.TEXT
+	timelimit, DataTypes.DATETIME
