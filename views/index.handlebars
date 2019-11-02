@@ -1,29 +1,49 @@
+<style>
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  button:hover {
+    opacity: 1;
+  }
+
+  .loginBtn {
+    background-color: cornflowerblue;
+    border-left: solid 2px white;
+  }
+
+  .loginBtn,
+  .signupBtn {
+    float: left;
+    width: 50%;
+  }
+</style>
+
 <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
+        <h2>This is Your Fkn To Do List!</h2>
+        <hr>
+        <h4>You ever put something on your regular old To Do List and ignore it without any repercussions?</h4>
+        <h4>Well those days are over, baby! This is Your Fkn To Do List and you better believe that there WILL BE
+          CONSEQUENCES if you neglect to complete your goals!</h4>
+        <h4>"Omg I'm so scared! What do you mean!?!"</h4>
+        <h4>If you fail to see your goals come to fruition, you're gonna Tweet out your failure to world to see! This
+          means you'll be shamed in front of your best friend, your mom, your faithful animal companions who love you
+          unconditionally, even Kim Kardashian will know what a POS you are!</h4>
+        <h4>So sign up today and get your life back on track!</h4>
+        <hr>
+        <a href="/signup"><button type="submit" class="signupBtn">Sign Up</button></a>
+        <button type="submit" class="loginBtn" href="/login">Login</button>
       </div>
     </div>
   </div>
