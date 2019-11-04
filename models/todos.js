@@ -1,7 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var ToDos = sequelize.define("ToDos", {
-    todo: DataTypes.TEXT,
-    deadline: DataTypes.INTEGER
+    priority: DataTypes.INTEGER,
+    title: DataTypes.STRING,
+    description: DataTypes.STRING,
+    status: DataTypes.BOOLEAN,
+    dueDate: DataTypes.DATE,
 });
   return ToDos;
 };

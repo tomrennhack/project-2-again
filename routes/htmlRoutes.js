@@ -1,23 +1,27 @@
-var db = require("../models");
+var db = require('../models');
 
-module.exports = function(app) {
+module.exports = function (app) {
   // load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
+
     res.render("index");
   });
 
   // go to signup page
-  app.get("/signup", function(req, res) {
+  app.get("/signup", function (req, res) {
     res.render("signup");
   });
 
-  app.get("/todos", function(req, res) {
-    res.render("todos");
+  app.get("/todos", function (req, res) {
+    db.ToDos.findAll().then(function (dbData) {
+
+      res.render("todos", { tasks: dbData });
+    })
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.UserInfo.findOne({ where: { id: req.params.id } }).then(function(dbfkntodolist) {
+  app.get("/example/:id", function (req, res) {
+    db.UserInfo.findOne({ where: { id: req.params.id } }).then(function (dbfkntodolist) {
       res.render("example", {
         example: dbfkntodolist
       });
@@ -36,7 +40,7 @@ module.exports = function(app) {
   // });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };

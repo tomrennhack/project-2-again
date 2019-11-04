@@ -2,8 +2,23 @@
     <div class="block-header">
         <h3>Tasks</h3>
     </div>
+
+
+    <div>
+        <form action="/api/todos" method="post">
+            Priority: <input type="number" name="priority" min="0" max="10"><br>
+            Title: <input type="text" name="title" id=""> <br>
+            Description: <input type="text" name="description" id=""> <br>
+            Due: <input type="date" name="dueDate" id="">
+            <input type="submit" value="Add todo">
+        </form>
+    </div>
+
+
+    <h3>Outstanding!</h3>
     <div class="block-content">
-        {{#each tasks}}
+        {{#each tasks}}{{#unless status}}
+
         <div class="task-row">
             <div class="priority {{priority}}">
                 <a tooltip="Task priority" class="tooltip">{{priority}}</a>
@@ -20,9 +35,47 @@
                     </div>
                 </div>
             </div>
-            <div class="task-time"><a tooltip="Time remaining ( total / used )" class="tooltip">{{calcRemaining}}
+
+            <form action="/api/update/todos/{{id}}" method="post">
+                <input type="hidden" name="status" value="1">
+                <input type="submit" value="Mark Complete">
+            </form>
+
+            <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
                     <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
         </div>
-        {{/each}}
+        {{/unless}}{{/each}}
+    </div>
+
+    <h3>Completed</h3>
+    <div class="block-content">
+        {{#each tasks}}{{#if status}}
+<div class="task-row">
+            <div class="priority {{priority}}">
+                <a tooltip="Task priority" class="tooltip">{{priority}}</a>
+            </div>
+            <div class="task-title">
+                <h4>{{title}}</h4>
+                <h5>{{description}}</h5>
+            </div>
+            <div class="task-status">
+                <div class="status-bar">
+                    <div class="status-track">
+                        <span class="status-text">{{status}}</span>
+                        <div class="status-fill" style="width:{{status}}"></div>
+                    </div>
+                </div>
+            </div>
+
+        <form action="/api/update/todos/{{id}}" method="post">
+            <input type="hidden" name="status" value="0">
+            <input type="submit" value="Mark Incomplete">
+        </form>
+
+        
+            <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
+                    <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
+        </div>
+        {{/if}}{{/each}}
     </div>
 </div>
