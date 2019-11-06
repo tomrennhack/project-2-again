@@ -12,7 +12,6 @@ module.exports = function(app) {
     db.UserInfo.create(body).then(function(fknUsers) {
     res.redirect('/todos');
       // return user ID
-      //res.json(fknUsers.id);
     });
   });
 };
