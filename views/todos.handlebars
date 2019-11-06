@@ -1,21 +1,20 @@
+
+
 <div class="block-container">
     <div class="block-header">
-        <h3>Tasks</h3>
-    </div>
-
-
-    <div>
+       <h1>todos</h1>
         <form action="/api/todos" method="post">
             Priority: <input type="number" name="priority" min="0" max="10"><br>
-            Title: <input type="text" name="title" id=""> <br>
-            Description: <input type="text" name="description" id=""> <br>
+            Title: <input class="new-todo" placeholder="What needs to be done?"  type="text" name="title" id=""> <br>
+            Description: <input placeholder="How are you gunna do it?"type="text" name="description" id=""> <br>
             Due: <input type="date" name="dueDate" id="">
             <input type="submit" value="Add todo">
         </form>
+			
     </div>
 
-
     <h3>Outstanding!</h3>
+    
     <div class="block-content">
         {{#each tasks}}{{#unless status}}
 
