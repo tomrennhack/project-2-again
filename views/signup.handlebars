@@ -3,6 +3,14 @@
         box-sizing: border-box
     }
 
+    h2 {
+        font-family: 'Permanent Marker', cursive;
+        color: rgb(40,80,40);
+    }
+    
+    .col-lg-10 {
+        background-color: rgb(92,184,92,.4);
+    }
     /* Full-width input fields */
     input[type=text],
     input[type=password] {
@@ -12,6 +20,8 @@
         display: inline-block;
         border: none;
         background: #f1f1f1;
+        border-radius: 5px;
+        font-family: 'Kalam', cursive;
     }
 
     input[type=text]:focus,
@@ -21,8 +31,7 @@
     }
 
     hr {
-        border: 1px solid #f1f1f1;
-        margin-bottom: 25px;
+    border-top: dotted 7px rgb(60,120,60);
     }
 
     /* Set a style for all buttons */
@@ -34,7 +43,7 @@
         border: none;
         cursor: pointer;
         width: 100%;
-        opacity: 0.9;
+        opacity: 0.8;
     }
 
     button:hover {
@@ -45,7 +54,8 @@
     .cancelbtn {
         padding: 14px 20px;
         background-color: #f44336;
-        border-right: solid 2px white;
+        border: solid 2px rgb(60, 60, 60);
+
     }
 
     /* Float cancel and signup buttons and add an equal width */
@@ -53,6 +63,8 @@
     .signupbtn {
         float: left;
         width: 50%;
+        border: solid 2px rgb(60, 60, 60);
+
     }
 
     /* Add padding to container elements */
@@ -81,28 +93,39 @@
     <div class="row">
         <div class="col-lg-10 mx-auto">
 
-            <form action="/api/signup" method="POST" style="border:1px solid #ccc">
+            <form action="/api/signup" method="POST">
                 <div class="container">
                     <h2>Your fkn account sign-up</h2>
                     <hr>
 
-                    <label for="fullName"><b>Full Name</b></label>
+                    {{!-- <label for="fullName"><b>Full Name</b></label> --}}
                     <input type="text" placeholder="Enter your full fkn name" name="fullName" required>
 
-                    <label for="email"><b>Email</b></label>
+                    {{!-- <label for="email"><b>Email</b></label> --}}
                     <input type="text" placeholder="Enter your fkn email" name="email" required>
 
-                    <label for="username"><b>Username</b></label>
+                    {{!-- <label for="username"><b>Username</b></label> --}}
                     <input type="text" placeholder="Enter your fkn username" name="username" required>
 
-                    <label for="psw"><b>Password</b></label>
+                    {{!-- <label for="psw"><b>Password</b></label> --}}
                     <input type="password" placeholder="Enter your fkn password" name="psw" required>
 
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    {{!-- <label for="psw-repeat"><b>Repeat Password</b></label> --}}
                     <input type="password" placeholder="Repeat your fkn password" name="psw-repeat" required>
+                    
+                    <h2>...Enter your friends' emails below:</h4>
+                    
+                    {{!-- <label for="emailFriendOne"><b>Friend Email 1</b></label> --}}
+                    <input type="text" placeholder="Enter your first friend's email " name="email" required>
+
+                    {{!-- <label for="emailFriendTwo"><b>Friend Email 2</b></label> --}}
+                    <input type="text" placeholder="Enter your second friend's email " name="email" required>
+
+                    {{!-- <label for="emailFriendThree"><b>Friend Email 3</b></label> --}}
+                    <input type="text" placeholder="Enter your third friends' email " name="email" required>
 
                     <div class="clearfix">
-                        <button type="button" class="cancelbtn">Cancel</button>
+                        <a href="/"><button type="button" class="cancelbtn">Cancel</button></a>
                         <button type="submit" class="signupbtn">Sign Up</button>
                     </div>
                 </div>
