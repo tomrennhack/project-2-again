@@ -1,80 +1,285 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
+    .block-container {
+        width: 80%;
+        margin: 14px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        font-size: 4em;
+        color: rgb(200, 102, 70);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        border-bottom: dotted 7px rgb(220, 120, 80);
+
+    }
+
+    h3 {
+        padding-top: 10px;
+        margin-top: 20px;
+        font-family: 'Permanent Marker', cursive;
+        font-size: 2em;
+    }
+
+    form {
+        font-family: 'Kalam', cursive;
+    }
+
+    #outstanding {
+        border-top: dotted 7px rgb(210, 75, 70);
+        color: rgb(190, 65, 60);
+    }
+
+    #completed {
+        border-top: dotted 7px rgb(70, 140, 70);
+        color: rgb(55, 110, 55);
+    }
+
+    .task-row {
+        background-color: rgb(245, 245, 245, .6);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    h4 {
+        font-family: 'Kalam', cursive;
+        font-size: 1.5em;
+        color: black;
+    }
+
+    h5 {
+        font-family: 'Kalam', cursive;
+        font-size: 1.2em;
+        color: rgb(60, 60, 60);
+    }
+
+    .status-bar {
+        display: none;
+    }
+
+    #title-input {
+        width: 300px;
+    }
+
+    #descr-input {
+        width: 350px;
+    }
+
+    #due-input {
+        width: 145px;
+    }
+
+    .col-lg-10 {
+        padding-bottom: 30px;
+    }
+
+    #mark-complete {
+        background-color: rgb(120,240,120);
+        padding: 5px;
+        border-radius: 10px;
+        opacity: .9;
+        width: 150px;
+    }
+
+    #mark-complete:hover {
+        opacity: 1;
+    }
+
+    #mark-incomplete {
+        background-color: rgb(255,90,80);
+        padding: 5px;
+        border-radius: 10px;
+        opacity: .9;
+        width: 150px;
+    }
+
+    #mark-incomplete:hover {
+        opacity: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+        .block-container {
+            width: 85%;
+            margin: 10px auto;
+            padding: 15px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+        }
+
+        h4 {
+            font-size: 1.2em;
+        }
+
+        h5 {
+            font-size: 1em
+        }
+    }
+
+    @media screen and (max-width: 680px) {
+        #title-input {
+            width: 100%;
+        }
+
+        #descr-input {
+            width: 100%;
+        }
+
+        #due-input {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .block-container {
+            width: 90%;
+            margin: 10px auto;
+            padding: 12px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h4 {
+            font-size: 1.1em;
+        }
+
+        h5 {
+            font-size: 1em
+        }
+    }
+
+    @media screen and (max-width: 480) {
+        .block-container {
+            width: 93%;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+        }
+
+        h4 {
+            font-size: 1em;
+        }
+
+        h5 {
+            font-size: .9em
+        }
+    }
+
+
+    @media screen and (max-width: 320) {
+        .block-container {
+            width: 95%;
+            margin: 10px auto;
+            padding: 8px;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        h4 {
+            font-size: 1em;
+        }
+
+        h5 {
+            font-size: .9em
+        }
+    }
+</style>
 
 <div class="block-container">
-    <div class="block-header">
-       <h1>todos</h1>
-        <form action="/api/todos" method="post">
-            Priority: <input type="number" name="priority" min="0" max="10"><br>
-            Title: <input class="new-todo" placeholder="What needs to be done?"  type="text" name="title" id=""> <br>
-            Description: <input placeholder="How are you gunna do it?"type="text" name="description" id=""> <br>
-            Due: <input type="date" name="dueDate" id="">
-            <input type="submit" value="Add todo">
-        </form>
-			
-    </div>
-
-    <h3>Outstanding!</h3>
-    
-    <div class="block-content">
-        {{#each tasks}}{{#unless status}}
-
-        <div class="task-row">
-            <div class="priority {{priority}}">
-                <a tooltip="Task priority" class="tooltip">{{priority}}</a>
-            </div>
-            <div class="task-title">
-                <h4>{{title}}</h4>
-                <h5>{{description}}</h5>
-            </div>
-            <div class="task-status">
-                <div class="status-bar">
-                    <div class="status-track">
-                        <span class="status-text">{{status}}</span>
-                        <div class="status-fill" style="width:{{status}}"></div>
-                    </div>
-                </div>
-            </div>
-
-            <form action="/api/update/todos/{{id}}" method="post">
-                <input type="hidden" name="status" value="1">
-                <input type="submit" value="Mark Complete">
+    <div class="col-lg-10 mx-auto">
+        <div class="block-header">
+            <h1>todos</h1>
+            <form action="/api/todos" method="post">
+                <span style="font-family: 'Courier New', Courier, monospace"><b>Order (1-10) ~~ </b></span><input
+                    type="number" name="priority" min="0" max="10"><br>
+                <span style="font-family: 'Courier New', Courier, monospace"><b>Task Title ~~~~ </b></span><input
+                    class="new-todo" placeholder="What needs to be done?" type="text" name="title" id="title-input">
+                <br>
+                <span style="font-family: 'Courier New', Courier, monospace"><b>Description ~~~ </b></span><input
+                    placeholder="How are you gunna do it?" type="text" name="description" id="descr-input"> <br>
+                <span style="font-family: 'Courier New', Courier, monospace"><b>Deadline ~~~~~~ </b></span><input
+                    type="date" name="dueDate" id="due-input">
+                <input type="submit" value="Add todo">
             </form>
-
-            <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
-                    <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
         </div>
-        {{/unless}}{{/each}}
-    </div>
 
-    <h3>Completed</h3>
-    <div class="block-content">
-        {{#each tasks}}{{#if status}}
-<div class="task-row">
-            <div class="priority {{priority}}">
-                <a tooltip="Task priority" class="tooltip">{{priority}}</a>
-            </div>
-            <div class="task-title">
-                <h4>{{title}}</h4>
-                <h5>{{description}}</h5>
-            </div>
-            <div class="task-status">
-                <div class="status-bar">
-                    <div class="status-track">
-                        <span class="status-text">{{status}}</span>
-                        <div class="status-fill" style="width:{{status}}"></div>
+        <h3 id="outstanding">Outstanding!</h3>
+
+        <div class="block-content">
+            {{#each tasks}}{{#unless status}}
+
+            <div class="task-row">
+                <div class="priority {{priority}}">
+                    <a tooltip="Task priority" class="tooltip">{{priority}}</a>
+                </div>
+                <div class="task-title">
+                    <h4>{{title}}</h4>
+                    <h5>{{description}}</h5>
+                </div>
+                <div class="task-status">
+                    <div class="status-bar">
+                        <div class="status-track">
+                            <span class="status-text">{{status}}</span>
+                            <div class="status-fill" style="width:{{status}}"></div>
+                        </div>
                     </div>
                 </div>
+
+                <form action="/api/update/todos/{{id}}" method="post">
+                    <input type="hidden" name="status" value="1">
+                    <input type="submit" value="Mark Complete" id="mark-complete">
+                </form>
+
+                <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
+                        <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
             </div>
-
-        <form action="/api/update/todos/{{id}}" method="post">
-            <input type="hidden" name="status" value="0">
-            <input type="submit" value="Mark Incomplete">
-        </form>
-
-        
-            <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
-                    <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
+            {{/unless}}{{/each}}
         </div>
-        {{/if}}{{/each}}
+
+        <h3 id="completed">Completed</h3>
+        <div class="block-content">
+            {{#each tasks}}{{#if status}}
+            <div class="task-row">
+                <div class="priority {{priority}}">
+                    <a tooltip="Task priority" class="tooltip">{{priority}}</a>
+                </div>
+                <div class="task-title">
+                    <h4>{{title}}</h4>
+                    <h5>{{description}}</h5>
+                </div>
+                <div class="task-status">
+                    <div class="status-bar">
+                        <div class="status-track">
+                            <span class="status-text">{{status}}</span>
+                            <div class="status-fill" style="width:{{status}}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="/api/update/todos/{{id}}" method="post">
+                    <input type="hidden" name="status" value="0">
+                    <input type="submit" value="Mark Incomplete" id="mark-incomplete">
+                </form>
+
+
+                <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
+                        <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
+            </div>
+            {{/if}}{{/each}}
+        </div>
     </div>
 </div>

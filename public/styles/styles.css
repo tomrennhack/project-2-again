@@ -4,7 +4,8 @@
 
 body {
   background-image: url("bg-paper.jpg");
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .app-name {
@@ -19,6 +20,19 @@ hr {
   border-top: dotted 3px rgb(220,120,80);
 }
 
+.quotes-container {
+  width: 70%;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 0 auto; 
+  background-color: rgb(250,250,250,.6);
+  color: rgb(200,110,70);
+  border-radius: 20px;
+  /* font-style: italic; */
+  font-family: 'Kalam', cursive;
+
+
+}
 button {
   color: white;
   padding: 14px 20px;
@@ -49,4 +63,17 @@ button:hover {
 .signupBtn {
   float: left;
   width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  h1 { font-size: 1.6em; }
+  h4 { font-size: 1.2em; }
+}
+
+@media screen and (max-width: 480px) {
+  .todosBtn,
+  .signupBtn {
+    float: left;
+    width: 100%;
+  }
 }
