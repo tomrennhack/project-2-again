@@ -7,7 +7,7 @@ module.exports = function(app) {
       // add to db.fkntodolist_users table
 
       // return user ID
-      res.json(fknUsers.id);
+      res.redirect(fknUsers.id);
 
       // redirect to home
     });
