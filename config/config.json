@@ -1,7 +1,6 @@
 {
   "development": {
     "username": "root",
-
     "password": "Fartdog90s",
     "database": "fkntodolist",
     "host": "localhost",
