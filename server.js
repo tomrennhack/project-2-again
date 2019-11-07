@@ -25,6 +25,11 @@ app.set("view engine", "handlebars");
 require("./routes/post-signup")(app);
 require("./routes/todosRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/apiRoutes")(app);
+
+app.get("*", function (req, res) {
+  res.render("404");
+});
 
 var syncOptions = { force: false };
 

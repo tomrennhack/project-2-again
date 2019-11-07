@@ -91,6 +91,18 @@
         opacity: 1;
     }
 
+    #mark-neverdone {
+        background-color: red;
+        padding: 5px;
+        border-radius: 10px;
+        opacity: .9;
+        width: 150px;
+    }
+
+    #mark-neverdone:hover {
+        opacity: 1;
+    }
+
     #mark-incomplete {
         background-color: rgb(255,90,80);
         padding: 5px;
@@ -204,8 +216,8 @@
         <div class="block-header">
             <h1>todos</h1>
             <form action="/api/todos" method="post">
-                <span style="font-family: 'Courier New', Courier, monospace"><b>Order (1-10) ~~ </b></span><input
-                    type="number" name="priority" min="0" max="10"><br>
+                <span style="font-family: 'Courier New', Courier, monospace"><b>User Email ~~~~ </b></span><input
+                    class="" placeholder="Enter your email" type="text" name="userId" id="title-input"><br>
                 <span style="font-family: 'Courier New', Courier, monospace"><b>Task Title ~~~~ </b></span><input
                     class="new-todo" placeholder="What needs to be done?" type="text" name="title" id="title-input">
                 <br>
@@ -223,8 +235,8 @@
             {{#each tasks}}{{#unless status}}
 
             <div class="task-row">
-                <div class="priority {{priority}}">
-                    <a tooltip="Task priority" class="tooltip">{{priority}}</a>
+                <div class="userId {{userId}}">
+                    <a tooltip="Task userId" class="tooltip">{{userId}}</a>
                 </div>
                 <div class="task-title">
                     <h4>{{title}}</h4>
@@ -242,6 +254,7 @@
                 <form action="/api/update/todos/{{id}}" method="post">
                     <input type="hidden" name="status" value="1">
                     <input type="submit" value="Mark Complete" id="mark-complete">
+                    <input type="submit" value="Not Happening" id="mark-neverdone">
                 </form>
 
                 <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
@@ -251,11 +264,12 @@
         </div>
 
         <h3 id="completed">Completed</h3>
+
         <div class="block-content">
             {{#each tasks}}{{#if status}}
             <div class="task-row">
-                <div class="priority {{priority}}">
-                    <a tooltip="Task priority" class="tooltip">{{priority}}</a>
+                <div class="userId {{userId}}">
+                    <a tooltip="Task userId" class="tooltip">{{userId}}</a>
                 </div>
                 <div class="task-title">
                     <h4>{{title}}</h4>
@@ -281,5 +295,39 @@
             </div>
             {{/if}}{{/each}}
         </div>
+
+        <h3 id="neverdone">Aint Gettin This Shhh Done</h3>
+
+        <div class="block-content">
+            {{#each tasks}}{{#if status}}
+            <div class="task-row">
+                <div class="userId {{userId}}">
+                    <a tooltip="Task userId" class="tooltip">{{userId}}</a>
+                </div>
+                <div class="task-title">
+                    <h4>{{title}}</h4>
+                    <h5>{{description}}</h5>
+                </div>
+                <div class="task-status">
+                    <div class="status-bar">
+                        <div class="status-track">
+                            <span class="status-text">{{status}}</span>
+                            <div class="status-fill" style="width:{{status}}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="/api/update/todos/{{id}}" method="post">
+                    <input type="hidden" name="status" value="1">
+                    <input type="submit" value="Mark Complete" id="mark-complete">
+                </form>
+
+
+                <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
+                        <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
+            </div>
+            {{/if}}{{/each}}
+        </div>
+
     </div>
 </div>

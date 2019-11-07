@@ -4,9 +4,20 @@ module.exports = function(app) {
   require("./post-signup.js")(app);
 
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/todos", function(req, res) {
+    console.log("api route");
+    db.ToDos.findAll({}).then(function(dbToDos) {
+      console.log(dbToDos);
+      res.json(dbToDos);
+    });
+  });
+
+  // Get all examples
+  app.get("/api/signup", function(req, res) {
+    console.log("api route");
+    db.UserInfo.findAll({}).then(function(dbUserInfo) {
+      console.log(dbUserInfo);
+      res.json(dbUserInfo);
     });
   });
 
