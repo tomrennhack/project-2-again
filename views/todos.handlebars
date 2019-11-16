@@ -254,9 +254,12 @@
                 <form action="/api/update/todos/{{id}}" method="post">
                     <input type="hidden" name="status" value="1">
                     <input type="submit" value="Mark Complete" id="mark-complete">
-                    {{!-- <input type="submit" value="Not Happening" id="mark-neverdone"> --}}
                 </form>
-
+                <form action="/api/update/todos/{{id}}" method="post">
+                    {{!-- <input type="hidden" name="status" value="1"> --}}
+                    <input type="submit" value="incomplete" id="Tell Friend">
+                </form>
+                
                 <div class="task-time"><a tooltip="Time remaining " class="tooltip">{{calcRemaining}}
                         <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
             </div>
