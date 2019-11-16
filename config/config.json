@@ -1,8 +1,12 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
 
     "password": "Password",
+=======
+    "password": "Fartdog90s",
+>>>>>>> 171cdd1025e845fcd5161bb006136eee862ccef0
     "database": "fkntodolist",
     "host": "localhost",
     "dialect": "mysql"

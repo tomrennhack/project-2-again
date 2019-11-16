@@ -8,7 +8,7 @@
 
 ## Demo
 	
-*Your Fkn-to-do-list* is deployed to Heroku. Please check it out [here]().
+*Your Fkn-to-do-list* is deployed to Heroku. Please check it out [here](https://project-2-again.herokuapp.com/).
 
 ## Installation
 
