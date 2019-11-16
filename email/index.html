@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+        <form id="myform" method="post">
+                <label>reply to:</label>
+                <input type="email" name="reply_to" placeholder="e-mail address"/>
+                <label>send to:</label>
+                <input type="email" name="user_email" placeholder="e-mail address"/>
+                <label>from:</label>
+                <input type="text" name="from_name" />
+                <label>to:</label>
+                <input type="text" name="to_name" />
+                
+                <input type="hidden" name="message_html" value="I FAILED MY TASK. FML. " />
+                <br><br>
+                <button>
+                Send
+                </button>
+                </form>
+                
+                <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+                
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+                <script type="text/javascript">
+                   (function(){
+                      emailjs.init("user_VDdQZ2F4PmR66w2FPU4nI");
+                   })();
+                </script>
+
+                <script src="./email.js"></script>
+</body>
+</html>
