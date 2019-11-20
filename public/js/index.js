@@ -1,5 +1,8 @@
 const sgMail = require('@sendgrid/mail');
+
 sgMail.setApiKey(process.env.SENDGRIDKEY);
+
+
 
 // Get references to page elements
 var $exampleText = $("#example-text");
