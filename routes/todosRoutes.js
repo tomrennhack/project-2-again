@@ -31,7 +31,6 @@ module.exports = function (app) {
       status: 0
     })
       .then(function (dbfkntodolist) {
-
         console.log(dbfkntodolist);
         res.redirect("/todos")
         // res.json(dbfkntodolist);
